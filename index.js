@@ -21,7 +21,7 @@ client.on("messageCreate", async message => {
         return;
     }
 
-    // Vérifier si l'utilisateur a la permission de bannir des membres
+   
     if (!message.member.permissions.has("BAN_MEMBERS")) {
         return await message.reply("Désolé, vous n'avez pas la permission de bannir des membres.");
     }
@@ -30,16 +30,16 @@ client.on("messageCreate", async message => {
     const command = args.shift().toLowerCase();
 
     if (command === "!ban") {
-        // Vérifier si un utilisateur est mentionné
+  
         const userToBan = message.mentions.users.first();
         if (!userToBan) {
             return await message.reply("Veuillez mentionner l'utilisateur que vous souhaitez bannir.");
         }
 
         try {
-            // Récupérer l'utilisateur depuis le serveur
+        
             const memberToBan = await message.guild.members.fetch(userToBan);
-            // Bannir l'utilisateur
+            // ban l'uttilisateur 
             await memberToBan.ban();
             await message.reply(`L'utilisateur ${userToBan.tag} a été banni avec succès.`);
         } catch (error) {
